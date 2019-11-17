@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<!-- build:css style.css -->
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<!-- endbuild -->
+		<meta name="viewport" content="width=648, user-scalable=no">
+		<title>WEMOS BASE: WIFI SETTINGS</title>
+	</head>
+	<body class="bgwhite">
+		<h1>WIFI SETTINGS</h1>
+		<br />
+		<p>By deafult, the board starts as an access point named <em>cordel</em> with the password <em>a9b8c7d6e5</em>. After the first connection you may change this setting using the form below. You can also hold down the reset button for some time to return to the access point mode. After setting the wifi behaviour, the curcuit is automatically restarted. You can always check out the mode leds to see how the wifi is being handled by the server.</p>
+		<br />
+		<hr />
+		<p>
+			<form method="post" id="formap">
+				<input type="hidden" name="ac" value="ap" />
+				<input class="bt" type="submit" value="USE AS AN ACCESS POINT" />
+			</form>
+		</p>
+		<hr />
+		<p>
+			<form method="post" id="formsta">
+				<input type="hidden" name="ac" value="sta" />
+				<input class="txinput" type="text" name="ssid" placeholder="ROUTER SSID" required /><br />
+				<input class="txinput" type="text" name="password" placeholder="ROUTER PASSWORD" required /><br />
+				<input class="bt" type="submit" value="CONNECT TO A ROUTER" />
+			</form>
+		</p>
+		<hr />
+		<p>
+			<form method="get" id="formback" action="index.html" >
+				<input class="bt" type="submit" value="RETURN TO BOARD INTERFACE" />
+			</form>
+		</p>
+	</body>
+</html>

@@ -1,0 +1,166 @@
+body {
+	line-height: 150%;
+	font-family: verdana, helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	background-color: #E4E4E4;
+	text-align: center;
+}
+a {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #000000;
+}
+h1 {
+	font-weight: bold;
+	font-size: 16px;
+	color: #5b400c;
+}
+#boardholder {
+	width: 640px;
+	margin: 0;
+	padding: 0;
+	height: 640px;
+}
+#board {
+	position: absolute;
+	width: 640px;
+	height: auto;
+	left: 0;
+	border:none;
+}
+.leddot {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+	font-weight: bold;
+	font-size: 20px;
+	opacity: 0.5;
+	cursor: pointer;
+}
+.hiddenform {
+	display: none;
+}
+#btholder {
+	width: 640px;
+	height: 120px;
+	padding: 0;
+	margin: 40px auto 0 auto;
+}
+#bttb {
+	border: none;
+	width: 640px;
+}
+.roundbt {
+	width: 120px;
+	height: 120px;
+	border-radius: 60px;
+	border: none;
+	cursor: pointer;
+}
+#btwifi {
+	background-color: #00bfff;
+}
+#imgwifi {
+	position: absolute;
+	width: 80px;
+	height: auto;
+	border: none;
+	left: 30px;
+	margin-top: 20px;
+}
+#btsubmit {
+	background-color: #00ff3d;
+}
+#imgsubmit {
+	position: absolute;
+	width: 80px;
+	height: auto;
+	border: none;
+	right: 20px;
+	margin-top: 20px;
+}
+#btreset {
+	background-color: #ff9900;
+}
+#imgreset {
+	width: 80px;
+	height: auto;
+	border: none;
+	margin-top: 20px;
+}
+#led0 {
+	margin-left: 382px;
+	margin-top: 511px;
+}
+#led1 {
+	margin-left: 450px;
+	margin-top: 430px;
+}
+#led2 {
+	margin-left: 450px;
+	margin-top: 296px;
+}
+#led3 {
+	margin-left: 450px;
+	margin-top: 164px;
+}
+#led4 {
+	margin-left: 382px;
+	margin-top: 80px;
+}
+#led5 {
+	margin-left: 209px;
+	margin-top: 80px;
+}
+#led6 {
+	margin-left: 130px;
+	margin-top: 164px;
+}
+#led7 {
+	margin-left: 130px;
+	margin-top: 296px;
+}
+#led8 {
+	margin-left: 130px;
+	margin-top: 430px;
+}
+#led9 {
+	margin-left: 209px;
+	margin-top: 511px;
+}
+#colorwheel {
+	width: 640px; 
+	margin: 10px auto 0 auto;
+}
+.bt {
+	color: #FFF;
+	background-color: #060;
+	border: none;
+	padding: 5px;
+	font-weight: bold;
+	border-radius: 5px;
+	margin: 2px 0 2px 0;
+	width: 600px;
+	font-size: 30px;
+}
+.txinput {
+	padding: 5px;
+	border: 1px solid #999999;
+	border-radius: 10px;
+	margin: 5px 0 10px 0;
+	font-size: 30px;
+	width: 600px;
+}
+hr {
+	margin: 25px 0 25px 0;
+}
+#osimg {
+	cursor: pointer;
+	border: none;
+	width: 100px;
+	height: auto;
+}

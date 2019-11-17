@@ -1,0 +1,156 @@
+<html>
+	<head>
+		<!-- build:css style.css -->
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<!-- endbuild -->
+		<!-- build:js script.js -->
+		<script type='text/javascript' src='jquery-3.4.1.min.js'></script>
+		<script type='text/javascript' src='raphael-min.js'></script>
+		<script type='text/javascript' src='colorwheel.js'></script>
+		<script type='text/javascript' src='script.js'></script>
+		<!-- endbuild -->
+		<meta name="viewport" content="width=648, user-scalable=no">
+		<title>CORDEL</title>
+	</head>
+	<body class="bgwhite">
+		<div id="boardholder">
+			<img id="board" src="img/board.png" />
+			<div id="led0" data-led="0" class="leddot">&nbsp;</div>
+			<div id="led1" data-led="1" class="leddot">&nbsp;</div>
+			<div id="led2" data-led="2" class="leddot">&nbsp;</div>
+			<div id="led3" data-led="3" class="leddot">&nbsp;</div>
+			<div id="led4" data-led="4" class="leddot">&nbsp;</div>
+			<div id="led5" data-led="5" class="leddot">&nbsp;</div>
+			<div id="led6" data-led="6" class="leddot">&nbsp;</div>
+			<div id="led7" data-led="7" class="leddot">&nbsp;</div>
+			<div id="led8" data-led="8" class="leddot">&nbsp;</div>
+			<div id="led9" data-led="9" class="leddot">&nbsp;</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div id="colorwheel"></div>
+		<div id="btholder">
+			<table id="bttb">
+				<tr>
+					<td align="left">
+						<div id="btwifi" class="roundbt">
+							<img id="imgwifi" src="img/wifi.png" />
+						</div>
+					</td>
+					<td align="center">
+						<div id="btreset" class="roundbt">
+							<img id="imgreset" src="img/reset.png" />
+						</div>
+					</td>
+					<td align="right">
+						<div id="btsubmit" class="roundbt">
+							<img id="imgsubmit" src="img/submit.png" />
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="hiddenform">
+			<form id="ledform" method="post">
+				<input type="hidden" name="ac" value="setcolor" />
+				<input type="hidden" name="led0" id="fled0" value="0" />
+				<input type="hidden" name="led1" id="fled1" value="0" />
+				<input type="hidden" name="led2" id="fled2" value="0" />
+				<input type="hidden" name="led3" id="fled3" value="0" />
+				<input type="hidden" name="led4" id="fled4" value="0" />
+				<input type="hidden" name="led5" id="fled5" value="0" />
+				<input type="hidden" name="led6" id="fled6" value="0" />
+				<input type="hidden" name="led7" id="fled7" value="0" />
+				<input type="hidden" name="led8" id="fled8" value="0" />
+				<input type="hidden" name="led9" id="fled9" value="0" />
+				<input type="hidden" name="red" id="fred" value="255" />
+				<input type="hidden" name="green" id="fgreen" value="255" />
+				<input type="hidden" name="blue" id="fblue" value="255" />
+			</form>
+			<form id="resetform" method="post">
+				<input type="hidden" name="ac" value="reset" />
+			</form>
+		</div>
+	</body>
+	<script>
+	// led selection states
+	var leds = new Array(false, false, false, false, false, false, false, false, false, false);
+
+	// color wheel object
+	var cw;
+	var cr = 255;
+	var cg = 255;
+	var cb = 255;
+
+	// update led display on the board
+	function updateLeds()
+	{
+		for (var i=0; i<leds.length; i++) {
+	if (leds[i]) {
+		$("#led" + i).css("opacity", "1");
+		$("#led" + i).css("background-color", "rgba(" + cr + ", " + cg + ", " + cb + ", 1)");
+	} else {
+		$("#led" + i).css("opacity", "0.5");
+		$("#led" + i).css("background-color", "rgba(255, 255, 255, 1)");
+	}
+		}
+	}
+		
+	// set the color of selected leds
+	function setColor(color)
+	{
+		cr = Math.round(color.r);
+		cg = Math.round(color.g);
+		cb = Math.round(color.b);
+		updateLeds();
+	}
+
+	// send led setup
+	function submitForm()
+	{
+		// setting led states
+		for (var i=0; i<leds.length; i++) {
+			if (leds[i]) {
+				$("#fled" + i).val(1);
+			} else {
+				$("#fled" + i).val(0);
+			}
+		}
+		// setting color
+		$("#fred").val(cr);
+		$("#fgreen").val(cg);
+		$("#fblue").val(cb);
+		// submit form
+		$("#ledform").submit();
+	}
+	
+	// reset board
+	function submitReset()
+	{
+		// submit form
+		$("#resetform").submit();
+	}
+
+	// document ready
+	$(document).ready(function() {
+		// led click
+		$(".leddot").click(function(evt) {
+			leds[$(this).attr("data-led")] = ! leds[$(this).attr("data-led")];
+			updateLeds();
+		});
+		// color wheel
+		cw = Raphael.colorwheel($("#colorwheel")[0],500, 240).color("#FF6600").onchange(setColor);
+		// submit button
+		$("#btsubmit").click(function(e){
+			submitForm();
+		});
+		// wifi settings
+		$("#btwifi").click(function(e){
+			window.location = "wifi.html";
+		});
+		// reset button
+		$("#btreset").click(function(e){
+			submitReset();
+		});
+	});
+	</script>
+</html>
